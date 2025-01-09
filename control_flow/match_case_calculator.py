@@ -1,28 +1,20 @@
-# match_case_calculator.py
+import os
 
-# Prompt the user for the first and second numbers
-num1 = float(input("Enter the first number: "))
-num2 = float(input("Enter the second number: "))
+# Check if the file exists and is not empty
+file_path = "weather.txt"
+if not os.path.exists(file_path) or os.path.getsize(file_path) == 0:
+    print(f"Error: The file '{file_path}' does not exist or is empty.")
+    exit()
 
-# Ask for the operation the user wants to perform
-operation = input("Choose the operation (+, -, *, /): ")
+# Prompt the user for weather input
+weather = input("Enter the weather (sunny, rainy, cold): ").strip().lower()
 
-# Perform the calculation using Match Case
-match operation:
-    case "+":
-        result = num1 + num2
-    case "-":
-        result = num1 - num2
-    case "*":
-        result = num1 * num2
-    case "/":
-        if num2 == 0:
-            print("Cannot divide by zero.")
-            exit()
-        result = num1 / num2
-    case _:
-        print("Invalid operation.")
-        exit()
-
-# Output the result
-print(f"The result is {result}.")
+# Check the weather condition
+if weather == "sunny":
+    print("It's a bright and beautiful day! Don't forget your sunglasses.")
+elif weather == "rainy":
+    print("It's wet outside. Don't forget your umbrella!")
+elif weather == "cold":
+    print("It's chilly. Wear a warm coat.")
+else:
+    print("Invalid weather input. Please enter 'sunny', 'rainy', or 'cold'.")
